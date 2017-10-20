@@ -5,43 +5,62 @@
  */
 
 import React, { Component } from 'react';
-import { AppRegistry, Text , Image, View,StyleSheet } from 'react-native';
+import { AppRegistry, Text , Image, View,StyleSheet,TextInput,ScrollView ,FlatList,TouchableOpacity} from 'react-native';
+import {Navigator} from 'react-native-deprecated-custom-components'
 
 export default class MyApp extends Component {
+
+    constructor(props){
+        super(props)
+        this.stats = {name : 10 }
+    }
+    touchUpInsead = () => {
+        alert('你点击了按钮' + this.stats.name)
+    }
+
     render() {
         return (
 
-    );
+            <View style={styles.mineViewStyle}>
+                {/*<View style={styles.buttonStyles}>*/}
+                    <TouchableOpacity  style={styles.buttonStyles} onPress={this.touchUpInsead}>
+                        <Text style={styles.textStyle}>
+                            确定
+                        </Text>
+                    </TouchableOpacity>
+                {/*</View>*/}
+
+            </View>
+
+
+
+        );
     }
 }
 
-
 const styles = StyleSheet.create({
-    rootView:{
-        backgroundColor:'red',
-        flex:1
-    },
-    innerView:{
-        backgroundColor:'green',
-        // 设置底部边框,一定要设置宽度才行
-        borderBottomColor:'yellow',
-        borderBottomWidth:2,
-        // 设置外间距
-        marginTop:50,
-        marginLeft:100,
-        // 设置内间距
-        paddingTop:30,
-        paddingLeft:50,
-        // 设置宽度
-        width:200,
-        height:300
-    },
-    paddingView:{
-        backgroundColor:'blue',
-        width:50,
-        height:50
-    }
-});
+        mineViewStyle:{
+            alignItems:'center',
+            justifyContent: 'center',
+            flex:1
 
+        },
+        buttonStyles:{
+            backgroundColor:'red',
+            height:30,
+            width:60,
+
+            alignItems:'center',
+            justifyContent: 'center',
+            borderRadius:5
+        },
+        textStyle:{
+            fontSize:16,
+            textAlign:'center',
+            color:'white'
+
+        }
+    }
+);
 
 AppRegistry.registerComponent('MyApp', () => MyApp);
